@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio1</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app">
+        <h1 class="text-center"> Tabla de Usuarios </h1>
+        <app-usuarios></app-usuarios>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        Vue.component("app-usuarios", {
+            template: `
+              
+                <table class="table table-striped">
+                
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">RUN</th>
+                    <th scope="col">Nacimiento</th>
+                    <th scope="col">Edad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(persona, $index) in personas" :key="$index">
+                        <th>{{ $index +1 }}</th>
+                        <td>{{ persona.nombre }}</td>
+                        <td>{{ persona.apellido }}</td>
+                        <td>{{ persona.run }}</td>
+                        <td>{{ persona.fec_nac }}</td>
+                        <td>{{ persona.edad }}</td>
+
+                    </tr>
+               
+                </tbody>
+                </table>
+            `,
+            data: () => ({
+                personas: [
+                    { nombre: "Almendra", apellido: "Tamayo", run: "18.614.880-0", fec_nac: "13/03/1994", edad: 27 },
+                    { nombre: "Juan", apellido: "Perez", run: "18.444.880-0", fec_nac: "13/05/1993", edad: 28 },
+                    { nombre: "Leo", apellido: "Rey", run: "17.677.555-0", fec_nac: "13/04/1992", edad: 29 },
+                ]
+            })
+        });
+
+        new Vue({
+            el: "#app",
+        });
+
+    </script>
+</body>
+
+</html>
